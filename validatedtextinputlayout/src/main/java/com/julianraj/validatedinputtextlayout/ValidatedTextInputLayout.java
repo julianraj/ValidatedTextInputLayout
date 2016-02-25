@@ -89,6 +89,8 @@ public class ValidatedTextInputLayout extends TextInputLayout{
                 setError(validator.getErrorMessage());
                 status = false;
                 break;
+            }else{
+                setError(null);
             }
         }
         return status;

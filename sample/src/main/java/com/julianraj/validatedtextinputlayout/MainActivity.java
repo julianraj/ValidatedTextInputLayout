@@ -36,14 +36,11 @@ public class MainActivity extends AppCompatActivity {
 
         mUsernameInput = ((ValidatedTextInputLayout) findViewById(R.id.username));
         mUsernameInput.addValidator(new RequiredValidator("This field is required"));
-        mUsernameInput.addValidator(new LengthValidator(4, 8, "The length must be between 4 and 8"));
-        mUsernameInput.setCounterEnabled(true);
-        mUsernameInput.setCounterMaxLength(8);
         mUsernameInput.autoTrimValue(true);
 
 
         mPasswordInput = ((ValidatedTextInputLayout) findViewById(R.id.password));
-        mPasswordInput.addValidator(new RequiredValidator("This field is required"));
+        //mPasswordInput.addValidator(new RequiredValidator("This field is required"));
         mPasswordInput.addValidator(new LengthValidator(6, LengthValidator.LENGTH_INDEFINITE,
                 "The password must be of at-least 6 characters"));
         mPasswordInput.setCounterEnabled(true);
