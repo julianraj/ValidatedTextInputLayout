@@ -4,6 +4,10 @@ ValidatedTextInputLayout
 > Android library for text inputs with support for validation.
 >> Extended from android design library's _TextInputLayout_.
 
+
+## Demo ##  
+![Basic](./images/demo.gif)
+
 ## Features ##
  - **AutoValidation**  
  Validate the input field as the text changes.  
