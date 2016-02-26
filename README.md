@@ -5,7 +5,7 @@ ValidatedTextInputLayout
 >> Extended from android design library's _TextInputLayout_.
 
 
-## Demo ##  
+## Demo ##
 ![Basic](./images/demo.gif)
 
 ## Features ##
@@ -14,7 +14,7 @@ ValidatedTextInputLayout
     `mInput.autoValidate(true);`  
  If `false` you need to call the `validate()` method explicitly for validation.  
  
- - **Autotrim**  
+ - **AutoTrim**  
  `mInput.getValue()` will return the trimmed value equivalent to `String.trim()` method    
     `mInput.autoTrimValue(true);`  
     
@@ -55,5 +55,19 @@ ValidatedTextInputLayout
             }
         }
 
+## Usage ##
+ - You can use and style it similar to **Android Design Library's** _TextInputLayout_  
+ 
+        <ValidatedTextInputLayout
+                 android:id="@+id/password"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content">
+         
+                 <EditText
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:hint="Password"
+                     android:inputType="textPassword"/>
+        </ValidatedTextInputLayout>
 
 **Thanks for using :D**  
