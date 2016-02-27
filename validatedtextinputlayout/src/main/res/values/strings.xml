@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">ValidatedInputTextLayout</string>
+
+    <string name="default_required_validation_message">This field is required.</string>
+    <string name="default_required_length_message_min_max">The input must have length between %1$d
+        and %2$d.</string>
+    <string name="default_required_length_message_min">The input length must be greater than
+        or equal to %1$d.</string>
+    <string name="default_required_length_message_max">The input length must be less than or
+        equal to %1$d.</string>
 </resources>

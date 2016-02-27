@@ -23,9 +23,10 @@ public class LengthValidator extends BaseValidator {
     @Override
     public boolean isValid(String pText) {
         int length = pText.length();
-        return (mMaximumLength == LENGTH_INDEFINITE
-                ? length >= mMinimumLength
-                : (length >= mMinimumLength && length <= mMaximumLength)
-        );
+        if(mMaximumLength == LENGTH_INDEFINITE) {
+            return length >= mMinimumLength;
+        }else{
+            return (length >= mMinimumLength && length <= mMaximumLength);
+        }
     }
 }

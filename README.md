@@ -11,12 +11,16 @@ ValidatedTextInputLayout
 ## Features ##
  - **AutoValidation**  
  Validate the input field as the text changes.  
-    `mInput.autoValidate(true);`  
- If `false` you need to call the `validate()` method explicitly for validation.  
+    `mInput.autoValidate(true);`
+    If `false` you need to call the `validate()` method explicitly for validation.  
+    OR  
+    use xml attribute `autoValidate` as true or false.
  
  - **AutoTrim**  
  `mInput.getValue()` will return the trimmed value equivalent to `String.trim()` method    
     `mInput.autoTrimValue(true);`  
+    OR  
+    use xml attribute `autoTrim` as true or false.
     
  - **Add Validators**  
  You can add multiple validators to a single input field.  
@@ -31,12 +35,23 @@ ValidatedTextInputLayout
     + **RequiredValidator**  
     Validates the input field as required. i.e. empty value is not valid.  
         `mInput.addValidator(new RequiredValidator("Your error message"));`  
+        OR  
+        use xml attribute `isRequired` as true or false.  
+        The default message will be "This field is required."  
+        For custom message you can use xml attribute `requiredValidationMessage`
         
     + **LengthValidator**  
     Validates the input field for minimum and maximum length specified.  
         `mInput.addValidator(new LengthValidator(8 /* Max Length */, "Your error message"));`  
-        OR  
         `mInput.addValidator(new LengthValidator(4 /* Min Length */, *8 /* Max Length */, "Your error message"));`  
+         OR  
+         use xml attributes `minLength` and `maxLength` with default values being "zero" and "indefinite" respectively.  
+         The default message will be one of following
+         - The input must have length between "minLength" and "maxLength".
+         - The input length must be greater than or equal to "minLength".
+         - The input length must be less than or equal to "maxLength".  
+         based on your values for `minLength` and `maxLength` attributes.  
+         For custom message you can use xml attribute `lengthValidationMessage`
  
  - **Custom Validators**  
  You can create your own validators to use with ValidatedTextInputLayout just by extending the `BaseValidator` class.  
@@ -59,6 +74,22 @@ ValidatedTextInputLayout
  - You can use and style it similar to **Android Design Library's** _TextInputLayout_  
  
         <ValidatedTextInputLayout
+                         xmlns:validation="http://schemas.android.com/apk/res-auto"
+                         android:id="@+id/username"
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         validation:isRequired="true"
+                         validation:autoTrim="true"
+                         validation:requiredValidationMessage="Your custom error message here.">
+                 
+                         <EditText
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:hint="Password"
+                             android:inputType="textPassword"/>
+        </ValidatedTextInputLayout>
+                
+        <ValidatedTextInputLayout
                  android:id="@+id/password"
                  android:layout_width="match_parent"
                  android:layout_height="wrap_content">
@@ -67,7 +98,11 @@ ValidatedTextInputLayout
                      android:layout_width="match_parent"
                      android:layout_height="wrap_content"
                      android:hint="Password"
-                     android:inputType="textPassword"/>
+                     android:inputType="textPassword"
+                     validation:autoValidate="true"
+                     validation:lengthValidationMessage="Your custom error message here."
+                     validation:maxLength="8"
+                     validation:minLength="4"/>
         </ValidatedTextInputLayout>
 
 **Thanks for using :D**  

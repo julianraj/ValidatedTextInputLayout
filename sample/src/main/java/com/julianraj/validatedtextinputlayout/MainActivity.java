@@ -10,8 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.julianraj.validatedinputtextlayout.ValidatedTextInputLayout;
-import com.julianraj.validatedinputtextlayout.validator.LengthValidator;
-import com.julianraj.validatedinputtextlayout.validator.RequiredValidator;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,16 +33,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
         mUsernameInput = ((ValidatedTextInputLayout) findViewById(R.id.username));
-        mUsernameInput.addValidator(new RequiredValidator("This field is required"));
-        mUsernameInput.autoTrimValue(true);
-
 
         mPasswordInput = ((ValidatedTextInputLayout) findViewById(R.id.password));
-        //mPasswordInput.addValidator(new RequiredValidator("This field is required"));
-        mPasswordInput.addValidator(new LengthValidator(6, LengthValidator.LENGTH_INDEFINITE,
-                "The password must be of at-least 6 characters"));
         mPasswordInput.setCounterEnabled(true);
-        mPasswordInput.autoValidate(true);
     }
 
     private void submitForm(){
