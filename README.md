@@ -71,6 +71,20 @@ ValidatedTextInputLayout
         }
 
 ## Usage ##
+ - **Maven**
+ 
+        <dependency>
+              <groupId>com.julianraj</groupId>
+              <artifactId>validatedtextinputlayout</artifactId>
+              <version>0.0.1</version>
+              <type>pom</type>
+        </dependency>
+ 
+ - **Gradle**
+ 
+        compile 'com.julianraj:validatedtextinputlayout:0.0.1'
+
+
  - You can use and style it similar to **Android Design Library's** _TextInputLayout_  
  
         <ValidatedTextInputLayout
