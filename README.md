@@ -1,8 +1,7 @@
 ValidatedTextInputLayout
 ========================
 
-> Android library for text inputs with support for validation.
->> Extended from android design library's _TextInputLayout_.
+>An extension to android design support library's TextInputLayout with validation support
 
 
 ## Demo ##
