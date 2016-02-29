@@ -110,7 +110,7 @@ public class ValidatedTextInputLayout extends TextInputLayout {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (mAutoValidate) validate();
+                if (isAutoValidated()) validate();
                 else setError(null);
             }
 
@@ -170,7 +170,7 @@ public class ValidatedTextInputLayout extends TextInputLayout {
     /**
      * @return if auto-trimming input field value is enabled
      */
-    public boolean isAutoTrimmed(){
+    public boolean isAutoTrimEnabled(){
         return mAutoTrimValue;
     }
 
@@ -202,7 +202,7 @@ public class ValidatedTextInputLayout extends TextInputLayout {
      * @see #autoTrimValue(boolean)
      */
     public String getValue() {
-        if (mAutoTrimValue) return getEditText().getText().toString().trim();
+        if (isAutoTrimEnabled()) return getEditText().getText().toString().trim();
         else return getEditText().getText().toString();
     }
 }

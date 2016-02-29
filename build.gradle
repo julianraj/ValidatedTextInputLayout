@@ -22,3 +22,7 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+task runUnitTests(dependsOn: [':validatedtextinputlayout:test']) {
+    description 'Run unit tests for the validatedtextinputlayout.'
+}

@@ -6,6 +6,7 @@ import com.julianraj.validatedinputtextlayout.ValidatedTextInputLayout;
 
 /**
  * Validator to set length constraints to the associated {@link ValidatedTextInputLayout}
+ *
  * @see BaseValidator
  */
 public class LengthValidator extends BaseValidator {
@@ -32,9 +33,15 @@ public class LengthValidator extends BaseValidator {
     private int mMaximumLength = LENGTH_INDEFINITE;
 
     /**
-     *
-     * @param pMaximumLength maximum length that the value of field can be
      * @param pErrorMessage error message to display if validation fails
+     */
+    public LengthValidator(@NonNull String pErrorMessage) {
+        super(pErrorMessage);
+    }
+
+    /**
+     * @param pMaximumLength maximum length that the value of field can be
+     * @param pErrorMessage  error message to display if validation fails
      */
     public LengthValidator(int pMaximumLength, @NonNull String pErrorMessage) {
         super(pErrorMessage);
@@ -42,12 +49,11 @@ public class LengthValidator extends BaseValidator {
     }
 
     /**
-     *
      * @param pMinimumLength minimum length that the value of field must be
      * @param pMaximumLength maximum length that the value of field can be
-     * @param pErrorMessage error message to display if validation fails
+     * @param pErrorMessage  error message to display if validation fails
      */
-    public LengthValidator(int pMinimumLength, int pMaximumLength,@NonNull String pErrorMessage) {
+    public LengthValidator(int pMinimumLength, int pMaximumLength, @NonNull String pErrorMessage) {
         super(pErrorMessage);
         mMinimumLength = pMinimumLength;
         mMaximumLength = pMaximumLength;
@@ -63,10 +69,32 @@ public class LengthValidator extends BaseValidator {
     @Override
     public boolean isValid(String pText) {
         int length = pText.length();
-        if(mMaximumLength == LENGTH_INDEFINITE) {
-            return length >= mMinimumLength;
-        }else{
-            return (length >= mMinimumLength && length <= mMaximumLength);
+        if (getMaximumLength() == LENGTH_INDEFINITE) {
+            return length >= getMinimumLength();
+        } else {
+            return (length >= getMinimumLength() && length <= getMaximumLength());
         }
+    }
+
+    /**
+     * @param pMinimumLength minimum required length
+     */
+    public void setMinimumLength(int pMinimumLength) {
+        mMinimumLength = pMinimumLength;
+    }
+
+    /**
+     * @param pMaximumLength maximum valid length
+     */
+    public void setMaximumLength(int pMaximumLength) {
+        mMaximumLength = pMaximumLength;
+    }
+
+    public int getMinimumLength() {
+        return mMinimumLength;
+    }
+
+    public int getMaximumLength() {
+        return mMaximumLength;
     }
 }
