@@ -1,4 +1,4 @@
-ValidatedTextInputLayout [ ![Download](https://api.bintray.com/packages/julianraj/maven/validatedtextinputlayout/images/download.svg) ](https://bintray.com/julianraj/maven/validatedtextinputlayout/_latestVersion)
+ValidatedTextInputLayout [ ![Download](https://api.bintray.com/packages/julianraj/maven/validatedtextinputlayout/images/download.svg) ](https://bintray.com/julianraj/maven/validatedtextinputlayout/_latestVersion)[![Circle CI](https://circleci.com/gh/julianraj/ValidatedTextInputLayout.svg?style=svg)](https://circleci.com/gh/julianraj/ValidatedTextInputLayout)
 ========================
 
 >An extension to android design support library's TextInputLayout with validation support
