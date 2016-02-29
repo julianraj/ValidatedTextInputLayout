@@ -11,8 +11,8 @@ ext {
     libraryDescription = 'An extension to android design support library\'s TextInputLayout with ' +
             'integrated validation support'
 
-    siteUrl = 'https://github.com/julianraj/ValidatedInputTextLayout'
-    gitUrl = 'https://github.com/julianraj/ValidatedInputTextLayout.git'
+    siteUrl = 'https://github.com/julianraj/ValidatedTextInputLayout'
+    gitUrl = 'https://github.com/julianraj/ValidatedTextInputLayout.git'
 
     libraryVersion = '0.0.1'
 
