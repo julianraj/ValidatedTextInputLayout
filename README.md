@@ -1,4 +1,4 @@
-ValidatedTextInputLayout
+ValidatedTextInputLayout [ ![Download](https://api.bintray.com/packages/julianraj/maven/validatedtextinputlayout/images/download.svg) ](https://bintray.com/julianraj/maven/validatedtextinputlayout/_latestVersion)
 ========================
 
 >An extension to android design support library's TextInputLayout with validation support
@@ -77,13 +77,13 @@ ValidatedTextInputLayout
         <dependency>
               <groupId>com.julianraj</groupId>
               <artifactId>validatedtextinputlayout</artifactId>
-              <version>0.0.1</version>
+              <version>0.0.2</version>
               <type>pom</type>
         </dependency>
  
  - **Gradle**
  
-        compile 'com.julianraj:validatedtextinputlayout:0.0.1'
+        compile 'com.julianraj:validatedtextinputlayout:0.0.2'
 
 
  - You can use and style it similar to **Android Design Library's** _TextInputLayout_  
