@@ -7,6 +7,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 
+import com.julianraj.validatedinputtextlayout.validator.BaseValidator;
 import com.julianraj.validatedinputtextlayout.validator.IValidator;
 import com.julianraj.validatedinputtextlayout.validator.LengthValidator;
 import com.julianraj.validatedinputtextlayout.validator.RequiredValidator;
@@ -15,10 +16,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by julian on 2/25/16.
+ * Extension of Android Design Library's {@link TextInputLayout}
+ *
+ * <p>This class enable you to add validation to the TextInputLayout
+ *
+ * @author Julian Raj Manandhar
+ * @version 0.0.1
  */
 public class ValidatedTextInputLayout extends TextInputLayout {
-    List<IValidator> mValidators;
+    private List<BaseValidator> mValidators;
     private boolean mAutoValidate = false;
     private boolean mAutoTrimValue = false;
 
@@ -114,24 +120,65 @@ public class ValidatedTextInputLayout extends TextInputLayout {
         });
     }
 
+    /**
+     * Clears all the validators associated with the {@link ValidatedTextInputLayout}.
+     */
     public void clearValidators() {
         mValidators.clear();
         setErrorEnabled(false);
     }
 
-    public void addValidator(IValidator pValidator) {
+    /**
+     * Associates new {@link IValidator} with the {@link ValidatedTextInputLayout}.
+     *
+     * @param pValidator new validator to be associated with the input field
+     */
+    public void addValidator(BaseValidator pValidator) {
         mValidators.add(pValidator);
         setErrorEnabled(true);
     }
 
+    /**
+     * Enable or disable auto-validation for the {@link ValidatedTextInputLayout}.
+     *
+     * @param flag flag to enable or disable auto-validation
+     */
     public void autoValidate(boolean flag) {
         mAutoValidate = flag;
     }
 
+    /**
+     * @return if auto-validation is enabled
+     */
+    public boolean isAutoValidated(){
+        return mAutoValidate;
+    }
+
+    /**
+     * Enable or disable auto-trimming of the value of the input field for the
+     * {@link ValidatedTextInputLayout}.
+     *
+     * <p>Enabling will remove any leading and trailing white space from the value of field.</p>
+     * <p>Caution: You may not want to enable this in case of password fields.</p>
+     *
+     * @param flag flag to enable or disable auto-trimming of value
+     */
     public void autoTrimValue(boolean flag) {
         mAutoTrimValue = flag;
     }
 
+    /**
+     * @return if auto-trimming input field value is enabled
+     */
+    public boolean isAutoTrimmed(){
+        return mAutoTrimValue;
+    }
+
+    /**
+     * Return a boolean which can be used to check the validity of the field.
+     *
+     * @return boolean indicating if the field is valid or not.
+     */
     public boolean validate() {
         boolean status = true;
         String text = getValue();
@@ -147,6 +194,13 @@ public class ValidatedTextInputLayout extends TextInputLayout {
         return status;
     }
 
+    /**
+     * Return a String value of the input field.
+     * <p>This method will remove white spaces if auto-trimming is enabled.</p>
+     *
+     * @return the value of the input field
+     * @see #autoTrimValue(boolean)
+     */
     public String getValue() {
         if (mAutoTrimValue) return getEditText().getText().toString().trim();
         else return getEditText().getText().toString();
