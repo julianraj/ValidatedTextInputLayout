@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionButton fab;
     ValidatedTextInputLayout mUsernameInput;
     ValidatedTextInputLayout mPasswordInput;
+    ValidatedTextInputLayout mEmailInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,13 +37,15 @@ public class MainActivity extends AppCompatActivity {
 
         mPasswordInput = ((ValidatedTextInputLayout) findViewById(R.id.password));
         mPasswordInput.setCounterEnabled(true);
+
+        mEmailInput = ((ValidatedTextInputLayout) findViewById(R.id.email));
     }
 
-    private void submitForm(){
-        if(validateFields()) {
+    private void submitForm() {
+        if (validateFields()) {
             Snackbar.make(fab, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .show();
-        }else{
+        } else {
             Snackbar.make(fab, "Check form for errors", Snackbar.LENGTH_LONG)
                     .setAction("Retry", new View.OnClickListener() {
                         @Override
@@ -54,10 +57,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private boolean validateFields(){
+    private boolean validateFields() {
         boolean flag = true;
-        if(!mUsernameInput.validate()) flag = false;
-        if(!mPasswordInput.validate()) flag = false;
+        if (!mUsernameInput.validate()) flag = false;
+        if (!mPasswordInput.validate()) flag = false;
+        if (!mEmailInput.validate()) flag = false;
         return flag;
     }
 

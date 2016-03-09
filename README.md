@@ -42,7 +42,7 @@ ValidatedTextInputLayout [ ![Download](https://api.bintray.com/packages/julianra
         For custom message you can use xml attribute `requiredValidationMessage`
         
     + **LengthValidator**  
-    Validates the input field for minimum and maximum length specified.  
+    Validates the input field against minimum and maximum length specified.  
         `mInput.addValidator(new LengthValidator(8 /* Max Length */, "Your error message"));`  
         `mInput.addValidator(new LengthValidator(4 /* Min Length */, *8 /* Max Length */, "Your error message"));`  
          OR  
@@ -53,6 +53,13 @@ ValidatedTextInputLayout [ ![Download](https://api.bintray.com/packages/julianra
          - The input length must be less than or equal to "maxLength".  
          based on your values for `minLength` and `maxLength` attributes.  
          For custom message you can use xml attribute `lengthValidationMessage`
+    + **RegexValidator**  
+        Validates the input field against provided regular expression. Equivalent to `String.matches()`  
+            `mInput.addValidator(new RegexValidator("your_regex", "Your error message"));`  
+            OR  
+            use xml attribute `regex` to set your regular expression.  
+            The default message will be "The field value does not match the required format."  
+            For custom message you can use xml attribute `regexValidationMessage`
  
  - **Custom Validators**  
  You can create your own validators to use with ValidatedTextInputLayout just by extending the `BaseValidator` class.  
@@ -77,48 +84,65 @@ ValidatedTextInputLayout [ ![Download](https://api.bintray.com/packages/julianra
         <dependency>
               <groupId>com.julianraj</groupId>
               <artifactId>validatedtextinputlayout</artifactId>
-              <version>0.0.2</version>
+              <version>0.0.3</version>
               <type>pom</type>
         </dependency>
  
  - **Gradle**
  
-        compile 'com.julianraj:validatedtextinputlayout:0.0.2'
+        compile 'com.julianraj:validatedtextinputlayout:0.0.3'
 
 
  - You can use and style it similar to **Android Design Library's** _TextInputLayout_  
  
-        <ValidatedTextInputLayout
-                         xmlns:validation="http://schemas.android.com/apk/res-auto"
-                         android:id="@+id/username"
-                         android:layout_width="match_parent"
-                         android:layout_height="wrap_content"
-                         validation:isRequired="true"
-                         validation:autoTrim="true"
-                         validation:requiredValidationMessage="Your custom error message here.">
-                 
-                         <EditText
-                             android:layout_width="match_parent"
-                             android:layout_height="wrap_content"
-                             android:hint="Password"
-                             android:inputType="textPassword"/>
-        </ValidatedTextInputLayout>
-                
-        <ValidatedTextInputLayout
-                 android:id="@+id/password"
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content">
-         
-                 <EditText
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     android:hint="Password"
-                     android:inputType="textPassword"
-                     validation:autoValidate="true"
-                     validation:lengthValidationMessage="Your custom error message here."
-                     validation:maxLength="8"
-                     validation:minLength="4"/>
-        </ValidatedTextInputLayout>
+        <com.julianraj.validatedinputtextlayout.ValidatedTextInputLayout
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                validation:autoTrim="true"
+                validation:isRequired="true"
+                validation:requiredValidationMessage="Your error message here.">
+        
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Username"
+                    android:singleLine="true"/>
+        
+        </com.julianraj.validatedinputtextlayout.ValidatedTextInputLayout>
+        
+        <com.julianraj.validatedinputtextlayout.ValidatedTextInputLayout
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                validation:autoValidate="true"
+                validation:lengthValidationMessage="Your error message here."
+                validation:maxLength="8"
+                validation:minLength="4">
+        
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Password (AutoValidated)"
+                    android:inputType="textPassword"
+                    android:singleLine="true"/>
+        
+        </com.julianraj.validatedinputtextlayout.ValidatedTextInputLayout>
+        
+        <com.julianraj.validatedinputtextlayout.ValidatedTextInputLayout
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                validation:autoTrim="true"
+                validation:regex="^[a-z0-9._%+-]+@(?:[a-z0-9-]+[.])+[a-z]{2,}$"
+                validation:regexValidationMessage="Your error message here">
+        
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Email"
+                    android:singleLine="true"/>
+        </com.julianraj.validatedinputtextlayout.ValidatedTextInputLayout>
         
 License
 -------

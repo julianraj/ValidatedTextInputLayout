@@ -10,6 +10,7 @@ import android.util.AttributeSet;
 import com.julianraj.validatedinputtextlayout.validator.BaseValidator;
 import com.julianraj.validatedinputtextlayout.validator.IValidator;
 import com.julianraj.validatedinputtextlayout.validator.LengthValidator;
+import com.julianraj.validatedinputtextlayout.validator.RegexValidator;
 import com.julianraj.validatedinputtextlayout.validator.RequiredValidator;
 
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ import java.util.List;
 
 /**
  * Extension of Android Design Library's {@link TextInputLayout}
- *
+ * <p/>
  * <p>This class enable you to add validation to the TextInputLayout
  *
  * @author Julian Raj Manandhar
@@ -55,39 +56,58 @@ public class ValidatedTextInputLayout extends TextInputLayout {
             mAutoValidate = typedArray.getBoolean(R.styleable
                     .ValidatedInputTextLayout_autoValidate, false);
 
-            if (typedArray.getBoolean(R.styleable.ValidatedInputTextLayout_isRequired, false)) {
-                String errorMessage = typedArray.getString(R.styleable
-                        .ValidatedInputTextLayout_requiredValidationMessage);
-                if (errorMessage == null)
-                    errorMessage = context.getString(R.string.default_required_validation_message);
-                addValidator(new RequiredValidator(errorMessage));
-            }
-
-            int minLength = typedArray.getInteger(R.styleable.ValidatedInputTextLayout_minLength,
-                    LengthValidator.LENGTH_ZERO);
-            int maxLength = typedArray.getInteger(R.styleable.ValidatedInputTextLayout_maxLength,
-                    LengthValidator.LENGTH_INDEFINITE);
-
-            if (!(minLength == LengthValidator.LENGTH_ZERO && maxLength == LengthValidator
-                    .LENGTH_INDEFINITE)) {
-                String errorMessage = typedArray.getString(R.styleable
-                        .ValidatedInputTextLayout_lengthValidationMessage);
-                if (errorMessage == null) {
-                    if (minLength == LengthValidator.LENGTH_ZERO) {
-                        errorMessage = context.getString(R.string
-                                .default_required_length_message_max, maxLength);
-                    } else if (maxLength == LengthValidator.LENGTH_INDEFINITE) {
-                        errorMessage = context.getString(R.string
-                                .default_required_length_message_min, minLength);
-                    } else {
-                        errorMessage = context.getString(R.string
-                                .default_required_length_message_min_max, minLength, maxLength);
-                    }
-                }
-                addValidator(new LengthValidator(minLength, maxLength, errorMessage));
-            }
+            initRequiredValidation(context, typedArray);
+            initLengthValidation(context, typedArray);
+            initRegexValidation(context, typedArray);
         } finally {
             typedArray.recycle();
+        }
+    }
+
+    private void initRequiredValidation(Context context, TypedArray typedArray) {
+        if (typedArray.getBoolean(R.styleable.ValidatedInputTextLayout_isRequired, false)) {
+            String errorMessage = typedArray.getString(R.styleable
+                    .ValidatedInputTextLayout_requiredValidationMessage);
+            if (errorMessage == null)
+                errorMessage = context.getString(R.string.default_required_validation_message);
+            addValidator(new RequiredValidator(errorMessage));
+        }
+    }
+
+    private void initLengthValidation(Context context, TypedArray typedArray) {
+        int minLength = typedArray.getInteger(R.styleable.ValidatedInputTextLayout_minLength,
+                LengthValidator.LENGTH_ZERO);
+        int maxLength = typedArray.getInteger(R.styleable.ValidatedInputTextLayout_maxLength,
+                LengthValidator.LENGTH_INDEFINITE);
+
+        if (!(minLength == LengthValidator.LENGTH_ZERO && maxLength == LengthValidator
+                .LENGTH_INDEFINITE)) {
+            String errorMessage = typedArray.getString(R.styleable
+                    .ValidatedInputTextLayout_lengthValidationMessage);
+            if (errorMessage == null) {
+                if (minLength == LengthValidator.LENGTH_ZERO) {
+                    errorMessage = context.getString(R.string
+                            .default_required_length_message_max, maxLength);
+                } else if (maxLength == LengthValidator.LENGTH_INDEFINITE) {
+                    errorMessage = context.getString(R.string
+                            .default_required_length_message_min, minLength);
+                } else {
+                    errorMessage = context.getString(R.string
+                            .default_required_length_message_min_max, minLength, maxLength);
+                }
+            }
+            addValidator(new LengthValidator(minLength, maxLength, errorMessage));
+        }
+    }
+
+    private void initRegexValidation(Context context, TypedArray typedArray) {
+        String regex = typedArray.getString(R.styleable.ValidatedInputTextLayout_regex);
+        if (regex != null) {
+            String errorMessage = typedArray.getString(R.styleable
+                    .ValidatedInputTextLayout_regexValidationMessage);
+            if (errorMessage == null)
+                errorMessage = context.getString(R.string.default_regex_validation_message);
+            addValidator(new RegexValidator(regex, errorMessage));
         }
     }
 
@@ -150,14 +170,14 @@ public class ValidatedTextInputLayout extends TextInputLayout {
     /**
      * @return if auto-validation is enabled
      */
-    public boolean isAutoValidated(){
+    public boolean isAutoValidated() {
         return mAutoValidate;
     }
 
     /**
      * Enable or disable auto-trimming of the value of the input field for the
      * {@link ValidatedTextInputLayout}.
-     *
+     * <p/>
      * <p>Enabling will remove any leading and trailing white space from the value of field.</p>
      * <p>Caution: You may not want to enable this in case of password fields.</p>
      *
@@ -170,7 +190,7 @@ public class ValidatedTextInputLayout extends TextInputLayout {
     /**
      * @return if auto-trimming input field value is enabled
      */
-    public boolean isAutoTrimEnabled(){
+    public boolean isAutoTrimEnabled() {
         return mAutoTrimValue;
     }
 

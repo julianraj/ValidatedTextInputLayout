@@ -8,4 +8,6 @@
         or equal to %1$d.</string>
     <string name="default_required_length_message_max">The input length must be less than or
         equal to %1$d.</string>
+    <string name="default_regex_validation_message">The field value does not match the
+        required format.</string>
 </resources>
