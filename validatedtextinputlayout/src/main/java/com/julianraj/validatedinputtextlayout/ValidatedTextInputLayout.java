@@ -18,7 +18,6 @@ import java.util.List;
 
 /**
  * Extension of Android Design Library's {@link TextInputLayout}
- * <p/>
  * <p>This class enable you to add validation to the TextInputLayout
  *
  * @author Julian Raj Manandhar
@@ -177,7 +176,6 @@ public class ValidatedTextInputLayout extends TextInputLayout {
     /**
      * Enable or disable auto-trimming of the value of the input field for the
      * {@link ValidatedTextInputLayout}.
-     * <p/>
      * <p>Enabling will remove any leading and trailing white space from the value of field.</p>
      * <p>Caution: You may not want to enable this in case of password fields.</p>
      *
