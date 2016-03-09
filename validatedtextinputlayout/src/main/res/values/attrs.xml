@@ -12,5 +12,7 @@
             <enum name="indefinite" value="-1"/>
         </attr>
         <attr name="lengthValidationMessage" format="string"/>
+        <attr name="regex" format="string"/>
+        <attr name="regexValidationMessage" format="string"/>
     </declare-styleable>
 </resources>
