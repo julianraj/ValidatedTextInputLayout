@@ -10,12 +10,14 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.julianraj.validatedinputtextlayout.ValidatedTextInputLayout;
+import com.julianraj.validatedinputtextlayout.validator.DependencyValidator;
 
 public class MainActivity extends AppCompatActivity {
 
     FloatingActionButton fab;
     ValidatedTextInputLayout mUsernameInput;
     ValidatedTextInputLayout mPasswordInput;
+    ValidatedTextInputLayout mConfPasswordInput;
     ValidatedTextInputLayout mEmailInput;
 
     @Override
@@ -37,6 +39,11 @@ public class MainActivity extends AppCompatActivity {
 
         mPasswordInput = ((ValidatedTextInputLayout) findViewById(R.id.password));
         mPasswordInput.setCounterEnabled(true);
+
+        mConfPasswordInput = ((ValidatedTextInputLayout) findViewById(R.id.conf_password));
+        mConfPasswordInput.addValidator(new DependencyValidator(mPasswordInput,
+                DependencyValidator.TYPE_EQUAL, "Confirmation password does not match the " +
+                "password."));
 
         mEmailInput = ((ValidatedTextInputLayout) findViewById(R.id.email));
     }
@@ -62,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
         if (!mUsernameInput.validate()) flag = false;
         if (!mPasswordInput.validate()) flag = false;
         if (!mEmailInput.validate()) flag = false;
+        if (!mConfPasswordInput.validate()) flag = false;
         return flag;
     }
 

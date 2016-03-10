@@ -45,21 +45,36 @@ public class ValidatedTextInputLayout extends TextInputLayout {
         initializeCustomAttrs(context, attrs);
     }
 
+    private void initialize() {
+        if (!isInEditMode()) {
+            mValidators = new ArrayList<>();
+            this.post(new Runnable() {
+                @Override
+                public void run() {
+                    if (!getEditText().isInEditMode())
+                        initializeTextWatcher();
+                }
+            });
+        }
+    }
+
     private void initializeCustomAttrs(Context context, AttributeSet attrs) {
-        TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable
-                .ValidatedInputTextLayout, 0, 0);
+        if (!isInEditMode()) {
+            TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable
+                    .ValidatedInputTextLayout, 0, 0);
 
-        try {
-            mAutoTrimValue = typedArray.getBoolean(R.styleable.ValidatedInputTextLayout_autoTrim,
-                    false);
-            mAutoValidate = typedArray.getBoolean(R.styleable
-                    .ValidatedInputTextLayout_autoValidate, false);
+            try {
+                mAutoTrimValue = typedArray.getBoolean(R.styleable.ValidatedInputTextLayout_autoTrim,
+                        false);
+                mAutoValidate = typedArray.getBoolean(R.styleable
+                        .ValidatedInputTextLayout_autoValidate, false);
 
-            initRequiredValidation(context, typedArray);
-            initLengthValidation(context, typedArray);
-            initRegexValidation(context, typedArray);
-        } finally {
-            typedArray.recycle();
+                initRequiredValidation(context, typedArray);
+                initLengthValidation(context, typedArray);
+                initRegexValidation(context, typedArray);
+            } finally {
+                typedArray.recycle();
+            }
         }
     }
 
@@ -108,17 +123,6 @@ public class ValidatedTextInputLayout extends TextInputLayout {
                 errorMessage = context.getString(R.string.default_regex_validation_message);
             addValidator(new RegexValidator(regex, errorMessage));
         }
-    }
-
-    private void initialize() {
-        mValidators = new ArrayList<>();
-        this.post(new Runnable() {
-            @Override
-            public void run() {
-                if (!getEditText().isInEditMode())
-                    initializeTextWatcher();
-            }
-        });
     }
 
     private void initializeTextWatcher() {
