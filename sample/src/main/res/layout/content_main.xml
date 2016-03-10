@@ -11,7 +11,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.julianraj.validatedtextinputlayout.MainActivity"
+    tools:context=".MainActivity"
     tools:showIn="@layout/activity_main">
 
     <com.julianraj.validatedinputtextlayout.ValidatedTextInputLayout
@@ -29,6 +29,22 @@
             android:hint="Username"
             android:singleLine="true"/>
 
+    </com.julianraj.validatedinputtextlayout.ValidatedTextInputLayout>
+
+    <com.julianraj.validatedinputtextlayout.ValidatedTextInputLayout
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        validation:autoTrim="true"
+        validation:autoValidate="true"
+        validation:regex="^[a-z0-9._%+-]+@(?:[a-z0-9-]+[.])+[a-z]{2,}$"
+        validation:regexValidationMessage="Please provide a valid email.">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:singleLine="true"/>
     </com.julianraj.validatedinputtextlayout.ValidatedTextInputLayout>
 
     <com.julianraj.validatedinputtextlayout.ValidatedTextInputLayout
@@ -50,19 +66,18 @@
     </com.julianraj.validatedinputtextlayout.ValidatedTextInputLayout>
 
     <com.julianraj.validatedinputtextlayout.ValidatedTextInputLayout
-        android:id="@+id/email"
+        android:id="@+id/conf_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        validation:autoTrim="true"
-        validation:autoValidate="true"
-        validation:regex="^[a-z0-9._%+-]+@(?:[a-z0-9-]+[.])+[a-z]{2,}$"
-        validation:regexValidationMessage="Please provide a valid email.">
+        android:layout_marginTop="@dimen/activity_vertical_margin">
 
         <android.support.design.widget.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email"
+            android:hint="Confirm Password"
+            android:inputType="textPassword"
             android:singleLine="true"/>
+
     </com.julianraj.validatedinputtextlayout.ValidatedTextInputLayout>
 
 </LinearLayout>

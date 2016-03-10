@@ -60,6 +60,13 @@ ValidatedTextInputLayout [ ![Download](https://api.bintray.com/packages/julianra
             use xml attribute `regex` to set your regular expression.  
             The default message will be "The field value does not match the required format."  
             For custom message you can use xml attribute `regexValidationMessage`
+    + **DependencyValidator**  
+            Validates the input field as per the dependency type with the input field it depends 
+            on.  
+            If `mInput1` depends on `mInput2` with dependency type TYPE_EQUAL: (i.e. `mInput1
+            .getValue()` must be equal to `mInput1.getValue()`)  
+            `mInput1.addValidator(new DependencyValidator(inputField, TYPE_EQUAL,  "Your error 
+            message"));`
  
  - **Custom Validators**  
  You can create your own validators to use with ValidatedTextInputLayout just by extending the `BaseValidator` class.  
