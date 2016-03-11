@@ -5,7 +5,7 @@ ValidatedTextInputLayout [ ![Download](https://api.bintray.com/packages/julianra
 
 
 ## Demo ##
-![Basic](./images/demo.gif)
+![Demo](./images/demo.gif)
 
 ## Features ##
  - **AutoValidation**  
@@ -65,7 +65,7 @@ ValidatedTextInputLayout [ ![Download](https://api.bintray.com/packages/julianra
             on.  
             If `mInput1` depends on `mInput2` with dependency type TYPE_EQUAL: (i.e. `mInput1
             .getValue()` must be equal to `mInput1.getValue()`)  
-            `mInput1.addValidator(new DependencyValidator(inputField, TYPE_EQUAL,  "Your error 
+            `mInput1.addValidator(new DependencyValidator(mInput2, TYPE_EQUAL,  "Your error 
             message"));`
  
  - **Custom Validators**  
