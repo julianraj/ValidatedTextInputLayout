@@ -1,8 +1,8 @@
-package com.julianraj.validatedinputtextlayout.validator;
+package com.julianraj.validatedtextinputlayout.validator;
 
 import android.support.annotation.NonNull;
 
-import com.julianraj.validatedinputtextlayout.ValidatedTextInputLayout;
+import com.julianraj.validatedtextinputlayout.ValidatedTextInputLayout;
 
 /**
  * Validator to set length constraints to the associated {@link ValidatedTextInputLayout}

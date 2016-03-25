@@ -17,7 +17,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.julianraj.validatedinputtextlayout.ValidatedTextInputLayout
+        <com.julianraj.validatedtextinputlayout.ValidatedTextInputLayout
             android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -32,9 +32,9 @@
                 android:hint="Username"
                 android:singleLine="true"/>
 
-        </com.julianraj.validatedinputtextlayout.ValidatedTextInputLayout>
+        </com.julianraj.validatedtextinputlayout.ValidatedTextInputLayout>
 
-        <com.julianraj.validatedinputtextlayout.ValidatedTextInputLayout
+        <com.julianraj.validatedtextinputlayout.ValidatedTextInputLayout
             android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -48,9 +48,9 @@
                 android:layout_height="wrap_content"
                 android:hint="Email"
                 android:singleLine="true"/>
-        </com.julianraj.validatedinputtextlayout.ValidatedTextInputLayout>
+        </com.julianraj.validatedtextinputlayout.ValidatedTextInputLayout>
 
-        <com.julianraj.validatedinputtextlayout.ValidatedTextInputLayout
+        <com.julianraj.validatedtextinputlayout.ValidatedTextInputLayout
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -66,9 +66,9 @@
                 android:inputType="textPassword"
                 android:singleLine="true"/>
 
-        </com.julianraj.validatedinputtextlayout.ValidatedTextInputLayout>
+        </com.julianraj.validatedtextinputlayout.ValidatedTextInputLayout>
 
-        <com.julianraj.validatedinputtextlayout.ValidatedTextInputLayout
+        <com.julianraj.validatedtextinputlayout.ValidatedTextInputLayout
             android:id="@+id/conf_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -80,7 +80,7 @@
                 android:inputType="textPassword"
                 android:singleLine="true"/>
 
-        </com.julianraj.validatedinputtextlayout.ValidatedTextInputLayout>
+        </com.julianraj.validatedtextinputlayout.ValidatedTextInputLayout>
 
         <TextView
             android:layout_width="match_parent"

@@ -1,4 +1,4 @@
-package com.julianraj.validatedtextinputlayout;
+package com.julianraj.validatedtextinputlayoutsample;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -9,8 +9,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.julianraj.validatedinputtextlayout.ValidatedTextInputLayout;
-import com.julianraj.validatedinputtextlayout.validator.DependencyValidator;
+import com.julianraj.validatedtextinputlayout.ValidatedTextInputLayout;
+import com.julianraj.validatedtextinputlayout.validator.DependencyValidator;
 
 public class MainActivity extends AppCompatActivity {
 
