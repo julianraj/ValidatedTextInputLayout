@@ -14,7 +14,7 @@ ext {
     siteUrl = 'https://github.com/julianraj/ValidatedTextInputLayout'
     gitUrl = 'https://github.com/julianraj/ValidatedTextInputLayout.git'
 
-    libraryVersion = '0.0.4'
+    libraryVersion = '0.1.0'
 
     developerId = 'julianraj'
     developerName = 'Julian Raj Manandhar'
@@ -33,7 +33,7 @@ android {
         minSdkVersion 9
         targetSdkVersion 23
         versionCode 1
-        versionName "0.0.4"
+        versionName "0.1.0"
     }
     buildTypes {
         release {

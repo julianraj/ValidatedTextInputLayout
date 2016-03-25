@@ -1,6 +1,6 @@
-package com.julianraj.validatedinputtextlayout;
+package com.julianraj.validatedtextinputlayout;
 
-import com.julianraj.validatedinputtextlayout.validator.BaseValidator;
+import com.julianraj.validatedtextinputlayout.validator.BaseValidator;
 
 import org.junit.Before;
 import org.junit.Test;

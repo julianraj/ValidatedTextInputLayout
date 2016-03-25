@@ -1,9 +1,9 @@
-package com.julianraj.validatedinputtextlayout.validator;
+package com.julianraj.validatedtextinputlayout.validator;
 
 import android.support.annotation.IntDef;
 import android.support.annotation.NonNull;
 
-import com.julianraj.validatedinputtextlayout.ValidatedTextInputLayout;
+import com.julianraj.validatedtextinputlayout.ValidatedTextInputLayout;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

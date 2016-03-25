@@ -1,4 +1,4 @@
-package com.julianraj.validatedtextinputlayout;
+package com.julianraj.validatedtextinputlayoutsample;
 
 import org.junit.Test;
 

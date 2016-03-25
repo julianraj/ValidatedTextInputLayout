@@ -1,4 +1,4 @@
-package com.julianraj.validatedinputtextlayout;
+package com.julianraj.validatedtextinputlayout;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -7,11 +7,11 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 
-import com.julianraj.validatedinputtextlayout.validator.BaseValidator;
-import com.julianraj.validatedinputtextlayout.validator.IValidator;
-import com.julianraj.validatedinputtextlayout.validator.LengthValidator;
-import com.julianraj.validatedinputtextlayout.validator.RegexValidator;
-import com.julianraj.validatedinputtextlayout.validator.RequiredValidator;
+import com.julianraj.validatedtextinputlayout.validator.BaseValidator;
+import com.julianraj.validatedtextinputlayout.validator.IValidator;
+import com.julianraj.validatedtextinputlayout.validator.LengthValidator;
+import com.julianraj.validatedtextinputlayout.validator.RegexValidator;
+import com.julianraj.validatedtextinputlayout.validator.RequiredValidator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,6 @@ import java.util.List;
  * <p>This class enable you to add validation to the TextInputLayout
  *
  * @author Julian Raj Manandhar
- * @version 0.0.1
  */
 public class ValidatedTextInputLayout extends TextInputLayout {
     private List<BaseValidator> mValidators;

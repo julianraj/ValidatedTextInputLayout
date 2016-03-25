@@ -102,7 +102,7 @@ ValidatedTextInputLayout [ ![Download](https://api.bintray.com/packages/julianra
 
  - You can use and style it similar to **Android Design Library's** _TextInputLayout_  
  
-        <com.julianraj.validatedinputtextlayout.ValidatedTextInputLayout
+        <com.julianraj.validatedtextinputlayout.ValidatedTextInputLayout
                 android:id="@+id/username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -116,9 +116,9 @@ ValidatedTextInputLayout [ ![Download](https://api.bintray.com/packages/julianra
                     android:hint="Username"
                     android:singleLine="true"/>
         
-        </com.julianraj.validatedinputtextlayout.ValidatedTextInputLayout>
+        </com.julianraj.validatedtextinputlayout.ValidatedTextInputLayout>
         
-        <com.julianraj.validatedinputtextlayout.ValidatedTextInputLayout
+        <com.julianraj.validatedtextinputlayout.ValidatedTextInputLayout
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -134,9 +134,9 @@ ValidatedTextInputLayout [ ![Download](https://api.bintray.com/packages/julianra
                     android:inputType="textPassword"
                     android:singleLine="true"/>
         
-        </com.julianraj.validatedinputtextlayout.ValidatedTextInputLayout>
+        </com.julianraj.validatedtextinputlayout.ValidatedTextInputLayout>
         
-        <com.julianraj.validatedinputtextlayout.ValidatedTextInputLayout
+        <com.julianraj.validatedtextinputlayout.ValidatedTextInputLayout
                 android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -149,7 +149,7 @@ ValidatedTextInputLayout [ ![Download](https://api.bintray.com/packages/julianra
                     android:layout_height="wrap_content"
                     android:hint="Email"
                     android:singleLine="true"/>
-        </com.julianraj.validatedinputtextlayout.ValidatedTextInputLayout>
+        </com.julianraj.validatedtextinputlayout.ValidatedTextInputLayout>
         
 License
 -------

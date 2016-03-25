@@ -1,4 +1,4 @@
-package com.julianraj.validatedtextinputlayout;
+package com.julianraj.validatedtextinputlayoutsample;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

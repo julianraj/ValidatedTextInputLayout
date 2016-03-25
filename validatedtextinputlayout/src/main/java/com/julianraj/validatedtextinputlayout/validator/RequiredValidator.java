@@ -1,6 +1,6 @@
-package com.julianraj.validatedinputtextlayout.validator;
+package com.julianraj.validatedtextinputlayout.validator;
 
-import com.julianraj.validatedinputtextlayout.ValidatedTextInputLayout;
+import com.julianraj.validatedtextinputlayout.ValidatedTextInputLayout;
 
 /**
  * Validator to set input field as required.

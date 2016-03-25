@@ -1,4 +1,4 @@
-package com.julianraj.validatedinputtextlayout.validator;
+package com.julianraj.validatedtextinputlayout.validator;
 
 /**
  * Interface to implement for custom validation
