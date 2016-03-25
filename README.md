@@ -91,13 +91,13 @@ ValidatedTextInputLayout [ ![Download](https://api.bintray.com/packages/julianra
         <dependency>
               <groupId>com.julianraj</groupId>
               <artifactId>validatedtextinputlayout</artifactId>
-              <version>0.0.4</version>
+              <version>0.1.0</version>
               <type>pom</type>
         </dependency>
  
  - **Gradle**
  
-        compile 'com.julianraj:validatedtextinputlayout:0.0.4'
+        compile 'com.julianraj:validatedtextinputlayout:0.1.0'
 
 
  - You can use and style it similar to **Android Design Library's** _TextInputLayout_  
