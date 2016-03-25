@@ -7,6 +7,10 @@ ValidatedTextInputLayout [ ![Download](https://api.bintray.com/packages/julianra
 ## Demo ##
 ![Demo](./images/demo.gif)
 
+**Note: library's package name has been corrected from validatedinputtextlayout to 
+validatedtextinputlayout in the latest version [You may want to update your xml files accordingly
+ on update]**
+
 ## Features ##
  - **AutoValidation**  
  Validate the input field as the text changes.  
