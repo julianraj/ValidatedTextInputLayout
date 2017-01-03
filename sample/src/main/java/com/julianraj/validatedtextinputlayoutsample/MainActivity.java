@@ -66,7 +66,9 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean validateFields() {
         boolean flag = true;
-        if (!mUsernameInput.validate()) flag = false;
+        if (!mUsernameInput.validate()) {
+            flag = false;
+        }
         if (!mPasswordInput.validate()) flag = false;
         if (!mEmailInput.validate()) flag = false;
         if (!mConfPasswordInput.validate()) flag = false;

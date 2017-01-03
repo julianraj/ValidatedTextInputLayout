@@ -157,7 +157,6 @@ public class ValidatedTextInputLayout extends TextInputLayout {
      */
     public void addValidator(BaseValidator pValidator) {
         mValidators.add(pValidator);
-        setErrorEnabled(true);
     }
 
     /**
@@ -205,13 +204,15 @@ public class ValidatedTextInputLayout extends TextInputLayout {
         String text = getValue();
         for (IValidator validator : mValidators) {
             if (!validator.isValid(text)) {
+                setErrorEnabled(true);
                 setError(validator.getErrorMessage());
                 status = false;
                 break;
             } else {
-                setError(null);
+                //setError(null);
             }
         }
+        if(status) setErrorEnabled(false);
         return status;
     }
 
