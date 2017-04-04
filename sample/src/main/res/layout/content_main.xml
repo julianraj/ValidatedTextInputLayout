@@ -40,7 +40,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             validation:autoTrim="true"
+            android:layout_marginTop="8dp"
             validation:autoValidate="true"
+            validation:errorAlwaysEnabled="true"
             validation:regex="^[a-z0-9._%+-]+@(?:[a-z0-9-]+[.])+[a-z]{2,}$"
             validation:regexValidationMessage="Please provide a valid email.">
 

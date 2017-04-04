@@ -26,6 +26,7 @@ public class ValidatedTextInputLayout extends TextInputLayout {
     private List<BaseValidator> mValidators;
     private boolean mAutoValidate = false;
     private boolean mAutoTrimValue = false;
+    private boolean mErrorAlwaysEnabled = true;
 
     public ValidatedTextInputLayout(Context context) {
         super(context);
@@ -67,6 +68,8 @@ public class ValidatedTextInputLayout extends TextInputLayout {
                         false);
                 mAutoValidate = typedArray.getBoolean(R.styleable
                         .ValidatedInputTextLayout_autoValidate, false);
+                mErrorAlwaysEnabled = typedArray.getBoolean(R.styleable
+                        .ValidatedInputTextLayout_errorAlwaysEnabled, true);
 
                 initRequiredValidation(context, typedArray);
                 initLengthValidation(context, typedArray);
@@ -188,6 +191,19 @@ public class ValidatedTextInputLayout extends TextInputLayout {
     }
 
     /**
+     * Flag to always enable error  for the {@link TextInputLayout}
+     * <p>Enabled by default.</p>
+     * <p>Disabling will remove the error space below the Field once the validate method returns
+     * true.
+     * .</p>
+     *
+     * @param errorAlwaysEnabled
+     */
+    public void setErrorAlwaysEnabled(boolean errorAlwaysEnabled) {
+        mErrorAlwaysEnabled = errorAlwaysEnabled;
+    }
+
+    /**
      * @return if auto-trimming input field value is enabled
      */
     public boolean isAutoTrimEnabled() {
@@ -209,10 +225,10 @@ public class ValidatedTextInputLayout extends TextInputLayout {
                 status = false;
                 break;
             } else {
-                //setError(null);
+                setError(null);
             }
         }
-        if(status) setErrorEnabled(false);
+        if (status && !mErrorAlwaysEnabled) setErrorEnabled(false);
         return status;
     }
 
