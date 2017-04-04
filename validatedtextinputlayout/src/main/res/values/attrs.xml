@@ -4,6 +4,7 @@
         <attr name="autoValidate" format="boolean"/>
         <attr name="autoTrim" format="boolean"/>
         <attr name="isRequired" format="boolean"/>
+        <attr name="errorAlwaysEnabled" format="boolean"/>
         <attr name="requiredValidationMessage" format="string"/>
         <attr name="minLength" format="integer">
             <enum name="zero" value="0"/>
