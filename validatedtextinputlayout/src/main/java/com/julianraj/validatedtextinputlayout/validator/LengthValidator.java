@@ -61,7 +61,7 @@ public class LengthValidator extends BaseValidator {
 
     /**
      * @param pErrorMessage error message to display if validation fails
-     * param pCallback callback for validation event
+     * @param pCallback callback for validation event
      */
     public LengthValidator(@NonNull String pErrorMessage, ValidationCallback pCallback) {
         super(pErrorMessage, pCallback);

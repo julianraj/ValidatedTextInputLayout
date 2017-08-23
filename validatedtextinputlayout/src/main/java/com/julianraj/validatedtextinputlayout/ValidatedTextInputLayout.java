@@ -197,7 +197,7 @@ public class ValidatedTextInputLayout extends TextInputLayout {
      * true.
      * .</p>
      *
-     * @param errorAlwaysEnabled
+     * @param errorAlwaysEnabled flag to set error-space as always enabled
      */
     public void setErrorAlwaysEnabled(boolean errorAlwaysEnabled) {
         mErrorAlwaysEnabled = errorAlwaysEnabled;
