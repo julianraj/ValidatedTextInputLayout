@@ -60,6 +60,38 @@ public class LengthValidator extends BaseValidator {
     }
 
     /**
+     * @param pErrorMessage error message to display if validation fails
+     * param pCallback callback for validation event
+     */
+    public LengthValidator(@NonNull String pErrorMessage, ValidationCallback pCallback) {
+        super(pErrorMessage, pCallback);
+    }
+
+    /**
+     * @param pMaximumLength maximum length that the value of field can be
+     * @param pErrorMessage  error message to display if validation fails
+     * @param pCallback callback for validation event
+     */
+    public LengthValidator(int pMaximumLength, @NonNull String pErrorMessage,
+                           ValidationCallback pCallback) {
+        super(pErrorMessage, pCallback);
+        mMaximumLength = pMaximumLength;
+    }
+
+    /**
+     * @param pMinimumLength minimum length that the value of field must be
+     * @param pMaximumLength maximum length that the value of field can be
+     * @param pErrorMessage  error message to display if validation fails
+     * @param pCallback callback for validation event
+     */
+    public LengthValidator(int pMinimumLength, int pMaximumLength, @NonNull String pErrorMessage,
+                           ValidationCallback pCallback) {
+        super(pErrorMessage, pCallback);
+        mMinimumLength = pMinimumLength;
+        mMaximumLength = pMaximumLength;
+    }
+
+    /**
      * Check if the associated {@link ValidatedTextInputLayout} meets the length constraint
      * associated with it.
      *

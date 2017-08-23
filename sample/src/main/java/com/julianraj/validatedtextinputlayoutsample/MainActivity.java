@@ -8,9 +8,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.julianraj.validatedtextinputlayout.ValidatedTextInputLayout;
+import com.julianraj.validatedtextinputlayout.validator.BaseValidator;
 import com.julianraj.validatedtextinputlayout.validator.DependencyValidator;
+import com.julianraj.validatedtextinputlayout.validator.ValidationCallback;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     ValidatedTextInputLayout mPasswordInput;
     ValidatedTextInputLayout mConfPasswordInput;
     ValidatedTextInputLayout mEmailInput;
+    ValidatedTextInputLayout mCustomInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +50,22 @@ public class MainActivity extends AppCompatActivity {
                 "password."));
 
         mEmailInput = ((ValidatedTextInputLayout) findViewById(R.id.email));
+
+        mCustomInput = ((ValidatedTextInputLayout) findViewById(R.id.custom));
+        ValidationCallback mCallback = new ValidationCallback() {
+            @Override
+            public void onValidation(boolean status) {
+                if (!status)
+                    Toast.makeText(MainActivity.this, "Your validation callback was called.",
+                            Toast.LENGTH_SHORT).show();
+            }
+        };
+        mCustomInput.addValidator(new BaseValidator("Only accepts the word 'Valid'", mCallback) {
+            @Override
+            public boolean isValid(String pText) {
+                return pText.equalsIgnoreCase("valid");
+            }
+        });
     }
 
     private void submitForm() {
@@ -72,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
         if (!mPasswordInput.validate()) flag = false;
         if (!mEmailInput.validate()) flag = false;
         if (!mConfPasswordInput.validate()) flag = false;
+        if (!mCustomInput.validate()) flag = false;
         return flag;
     }
 

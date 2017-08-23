@@ -1,5 +1,7 @@
 package com.julianraj.validatedtextinputlayout.validator;
 
+import android.support.annotation.NonNull;
+
 import com.julianraj.validatedtextinputlayout.ValidatedTextInputLayout;
 
 /**
@@ -13,6 +15,14 @@ public class RequiredValidator extends BaseValidator {
      */
     public RequiredValidator(String pErrorMessage) {
         super(pErrorMessage);
+    }
+
+    /**
+     * @param pErrorMessage error message to display if validation fails
+     * @param pCallback callback for validation event
+     */
+    public RequiredValidator(@NonNull String pErrorMessage, ValidationCallback pCallback) {
+        super(pErrorMessage, pCallback);
     }
 
     /**

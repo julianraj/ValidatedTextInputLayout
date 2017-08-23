@@ -47,6 +47,20 @@ public class DependencyValidator extends BaseValidator {
         mDependencyType = pDependencyType;
     }
 
+    /**
+     * @param pDependsOn field for dependency
+     * @param pDependencyType type of dependency between the fields (must be one of #TYPE_EQUAL
+     *                        or TYPE_REQUIRED_IF_EXISTS)
+     * @param pErrorMessage   error message to display if validation fails
+     * @param pCallback   callback for validation event
+     */
+    public DependencyValidator(@NonNull ValidatedTextInputLayout pDependsOn, @DependencyType int
+            pDependencyType, @NonNull String pErrorMessage, ValidationCallback pCallback) {
+        super(pErrorMessage, pCallback);
+        mDependstOn = pDependsOn;
+        mDependencyType = pDependencyType;
+    }
+
     @Override
     public boolean isValid(String pText) {
         if (mDependencyType == TYPE_EQUAL) {

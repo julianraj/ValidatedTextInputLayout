@@ -89,19 +89,24 @@ validatedtextinputlayout in the latest version [You may want to update your xml 
             }
         }
 
+ - **Validation Callback**
+  You can add callbacks to the validators from constructor or a setter using the
+  `ValidationCallback` class.
+
+
 ## Usage ##
  - **Maven**
  
         <dependency>
               <groupId>com.julianraj</groupId>
               <artifactId>validatedtextinputlayout</artifactId>
-              <version>0.1.0</version>
+              <version>0.3.0</version>
               <type>pom</type>
         </dependency>
  
  - **Gradle**
  
-        compile 'com.julianraj:validatedtextinputlayout:0.1.0'
+        compile 'com.julianraj:validatedtextinputlayout:0.3.0'
 
 
  - You can use and style it similar to **Android Design Library's** _TextInputLayout_  

@@ -15,6 +15,8 @@ public abstract class BaseValidator implements IValidator {
      */
     protected String mErrorMessage;
 
+    protected ValidationCallback mCallback;
+
     /**
      * Sole constructor. (For invocation by subclass constructors)
      *
@@ -22,6 +24,27 @@ public abstract class BaseValidator implements IValidator {
      */
     public BaseValidator(@NonNull String pErrorMessage) {
         setErrorMessage(pErrorMessage);
+    }
+
+    public BaseValidator(@NonNull String errorMessage, ValidationCallback callback) {
+        mErrorMessage = errorMessage;
+        mCallback = callback;
+    }
+
+    /**
+     * Validate the associated {@link ValidatedTextInputLayout}.
+     * Also call the callback method if {@link ValidationCallback} is provided
+     *
+     * @param pText value associated with the input field
+     * @return validity of the field
+     */
+    public boolean validate(String pText) {
+        boolean status = isValid(pText);
+
+        if (mCallback != null)
+            mCallback.onValidation(status);
+
+        return status;
     }
 
     /**
@@ -51,5 +74,9 @@ public abstract class BaseValidator implements IValidator {
     @Override
     public String getErrorMessage() {
         return mErrorMessage;
+    }
+
+    public void setCallback(ValidationCallback callback) {
+        mCallback = callback;
     }
 }

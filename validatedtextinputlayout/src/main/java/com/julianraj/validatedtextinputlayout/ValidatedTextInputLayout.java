@@ -218,8 +218,8 @@ public class ValidatedTextInputLayout extends TextInputLayout {
     public boolean validate() {
         boolean status = true;
         String text = getValue();
-        for (IValidator validator : mValidators) {
-            if (!validator.isValid(text)) {
+        for (BaseValidator validator : mValidators) {
+            if (!validator.validate(text)) {
                 setErrorEnabled(true);
                 setError(validator.getErrorMessage());
                 status = false;
