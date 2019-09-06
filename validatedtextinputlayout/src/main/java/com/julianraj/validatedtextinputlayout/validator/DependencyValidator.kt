@@ -14,7 +14,7 @@ import com.julianraj.validatedtextinputlayout.ValidatedTextInputLayout
 class DependencyValidator(private val dependsOn: ValidatedTextInputLayout,
                           private val dependencyType: DependencyType,
                           errorMessage: String,
-                          callback: ((Boolean)-> Unit)? = null) :
+                          callback: ValidationCallback? = null) :
         BaseValidator(errorMessage, callback) {
 
     override fun isValid(text: String): Boolean {

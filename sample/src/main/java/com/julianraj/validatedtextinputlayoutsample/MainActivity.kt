@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import com.julianraj.validatedtextinputlayout.validator.BaseValidator
 import com.julianraj.validatedtextinputlayout.validator.DependencyValidator
+import com.julianraj.validatedtextinputlayout.validator.ValidationCallback
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 
@@ -28,10 +29,12 @@ class MainActivity : AppCompatActivity() {
         confirmationPassword.addValidator(dependencyValidator)
 
         custom.addValidator(object : BaseValidator("Only accepts the word 'Valid'",
-                { status ->
-                    if (!status)
-                        Toast.makeText(this@MainActivity, "Your validation callback was called.",
-                                Toast.LENGTH_SHORT).show()
+                object : ValidationCallback {
+                    override fun onValidation(status: Boolean) {
+                        if (!status)
+                            Toast.makeText(this@MainActivity, "Your validation callback was called.",
+                                    Toast.LENGTH_SHORT).show()
+                    }
                 }) {
             override fun isValid(text: String): Boolean {
                 return text.equals("valid", ignoreCase = true)

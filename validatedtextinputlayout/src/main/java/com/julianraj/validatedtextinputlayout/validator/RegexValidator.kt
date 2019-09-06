@@ -15,7 +15,7 @@ import java.util.regex.Pattern
  */
 class RegexValidator(private val regex: String,
                      errorMessage: String,
-                     callback: ((Boolean)-> Unit)? = null) : BaseValidator(errorMessage, callback) {
+                     callback: ValidationCallback? = null) : BaseValidator(errorMessage, callback) {
 
     /**
      * Check if the associated [ValidatedTextInputLayout] has correct value.

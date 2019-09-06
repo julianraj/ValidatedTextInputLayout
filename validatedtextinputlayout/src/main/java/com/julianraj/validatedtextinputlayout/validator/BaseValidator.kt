@@ -10,7 +10,7 @@ import com.julianraj.validatedtextinputlayout.ValidatedTextInputLayout
  *
  */
 abstract class BaseValidator(val errorMessage: String,
-                             val callback: ((Boolean)-> Unit)? = null) {
+                             val callback: ValidationCallback? = null) {
 
     /**
      * Validate the associated [ValidatedTextInputLayout].
@@ -23,7 +23,7 @@ abstract class BaseValidator(val errorMessage: String,
     fun validate(text: String): Boolean {
         val status = isValid(text)
 
-        callback?.invoke(status)
+        callback?.onValidation(status)
 
         return status
     }

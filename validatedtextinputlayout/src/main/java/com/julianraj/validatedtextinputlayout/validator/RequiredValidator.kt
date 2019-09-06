@@ -11,7 +11,8 @@ import com.julianraj.validatedtextinputlayout.ValidatedTextInputLayout
  * @see BaseValidator
  */
 class RequiredValidator(errorMessage: String,
-                        callback: ((Boolean)-> Unit)? = null) : BaseValidator(errorMessage, callback) {
+                        callback: ValidationCallback? = null
+) : BaseValidator(errorMessage, callback) {
 
     /**
      * Check if the associated [ValidatedTextInputLayout] is empty or not.

@@ -15,7 +15,16 @@ import com.julianraj.validatedtextinputlayout.ValidatedTextInputLayout
 class LengthValidator(private val minimumLength: Int = LENGTH_ZERO,
                       private val maximumLength: Int = LENGTH_INDEFINITE,
                       errorMessage: String,
-                      callback: ((Boolean)-> Unit)? = null) : BaseValidator(errorMessage, callback) {
+                      callback: ValidationCallback? = null) : BaseValidator(errorMessage, callback) {
+
+    val minLength: Int
+        get() {
+            return minimumLength
+        }
+    val maxLength: Int
+        get() {
+            return maximumLength
+        }
 
     /**
      * Check if the associated [ValidatedTextInputLayout] meets the length constraint
@@ -26,10 +35,10 @@ class LengthValidator(private val minimumLength: Int = LENGTH_ZERO,
      */
     override fun isValid(text: String): Boolean {
         val length = text.length
-        return if (maximumLength == LENGTH_INDEFINITE) {
-            length >= minimumLength
+        return if (maxLength == LENGTH_INDEFINITE) {
+            length >= minLength
         } else {
-            length in minimumLength..maximumLength
+            length in minLength..maxLength
         }
     }
 
