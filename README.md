@@ -7,39 +7,38 @@ ValidatedTextInputLayout [ ![Download](https://api.bintray.com/packages/julianra
 ## Demo ##
 ![Demo](./images/demo.gif)
 
-**Note: library's package name has been corrected from validatedinputtextlayout to 
-validatedtextinputlayout in the latest version [You may want to update your xml files accordingly
- on update]**
+**Note: v1.0.0-beta1 adds migration to androidx and to kotlin from java. Upgrading to beta might
+break your code.**
 
 ## Features ##
  - **AutoValidation**  
  Validate the input field as the text changes.  
-    `mInput.autoValidate(true);`
+    `input.autoValidate(true)`
     If `false` you need to call the `validate()` method explicitly for validation.  
     OR  
     use xml attribute `autoValidate` as true or false.
  
  - **AutoTrim**  
- `mInput.getValue()` will return the value of input field after removing leading and trailing 
+ `input.getValue()` will return the value of input field after removing leading and trailing 
  white spaces  
  
-    `mInput.autoTrimValue(true);`  
+    `input.autoTrimValue(true)`
     OR  
     use xml attribute `autoTrim` as true or false.
     
  - **Add Validators**  
  You can add multiple validators to a single input field.  
-     `mInput.addValidator(/* Your first Validator class goes here */);`  
-     `mInput.addValidator(/* Your second Validator class goes here */);`  
+     `input.addValidator(/* Your first Validator class goes here */)`
+     `input.addValidator(/* Your second Validator class goes here */)`
  
  - **Clear Validators**  
  Removes all the validators associated with the input field.  
-    `mInput.clearValidators();`  
+    `input.clearValidators()`
     
  - **Default Available Validators**  
     + **RequiredValidator**  
     Validates the input field as required. i.e. empty value is not valid.  
-        `mInput.addValidator(new RequiredValidator("Your error message"));`  
+        `input.addValidator(RequiredValidator("Your error message"))`
         OR  
         use xml attribute `isRequired` as true or false.  
         The default message will be "This field is required."  
@@ -47,8 +46,8 @@ validatedtextinputlayout in the latest version [You may want to update your xml 
         
     + **LengthValidator**  
     Validates the input field against minimum and maximum length specified.  
-        `mInput.addValidator(new LengthValidator(8 /* Max Length */, "Your error message"));`  
-        `mInput.addValidator(new LengthValidator(4 /* Min Length */, *8 /* Max Length */, "Your error message"));`  
+        `input.addValidator(LengthValidator(8 /* Max Length */, "Your error message"))`
+        `input.addValidator(LengthValidator(4 /* Min Length */, *8 /* Max Length */, "Your error message"))`
          OR  
          use xml attributes `minLength` and `maxLength` with default values being "zero" and "indefinite" respectively.  
          The default message will be one of following
@@ -59,7 +58,7 @@ validatedtextinputlayout in the latest version [You may want to update your xml 
          For custom message you can use xml attribute `lengthValidationMessage`
     + **RegexValidator**  
         Validates the input field against provided regular expression. Equivalent to `String.matches()`  
-            `mInput.addValidator(new RegexValidator("your_regex", "Your error message"));`  
+            `input.addValidator(new RegexValidator("your_regex", "Your error message"))`
             OR  
             use xml attribute `regex` to set your regular expression.  
             The default message will be "The field value does not match the required format."  
@@ -67,10 +66,10 @@ validatedtextinputlayout in the latest version [You may want to update your xml 
     + **DependencyValidator**  
             Validates the input field as per the dependency type with the input field it depends 
             on.  
-            If `mInput1` depends on `mInput2` with dependency type TYPE_EQUAL: (i.e. `mInput1
-            .getValue()` must be equal to `mInput1.getValue()`)  
-            `mInput1.addValidator(new DependencyValidator(mInput2, TYPE_EQUAL,  "Your error 
-            message"));`
+            If `input1` depends on `input2` with dependency type TYPE_EQUAL: (i.e. `input1
+            .getValue()` must be equal to `input1.getValue()`)  
+            `input1.addValidator(new DependencyValidator(input2, TYPE_EQUAL,  "Your error 
+            message"))`
  
  - **Custom Validators**  
  You can create your own validators to use with ValidatedTextInputLayout just by extending the `BaseValidator` class.  
@@ -78,14 +77,10 @@ validatedtextinputlayout in the latest version [You may want to update your xml 
  
  Example: Validator class to check if field value contains  character sequence "xyz"  
   
-        public class MyValidator extends BaseValidator {
-            public MyValidator(String pErrorMessage){
-                super(pErrorMessage);
-            }
-            
-            @Override
-            public boolean isValid(String pText){
-                return pText.contains("xyz");
+        class MyValidator(errorMessage: String,
+                          callback: ValidationCallback? = null): BaseValidator(errorMessage, callback) {
+            override fun isValid(text: String): Boolean {
+                return text.contains("xyz")
             }
         }
 
@@ -100,13 +95,13 @@ validatedtextinputlayout in the latest version [You may want to update your xml 
         <dependency>
               <groupId>com.julianraj</groupId>
               <artifactId>validatedtextinputlayout</artifactId>
-              <version>0.3.0</version>
+              <version>1.0.0-beta1</version>
               <type>pom</type>
         </dependency>
  
  - **Gradle**
  
-        compile 'com.julianraj:validatedtextinputlayout:0.3.0'
+        compile 'com.julianraj:validatedtextinputlayout:1.0.0-beta1'
 
 
  - You can use and style it similar to **Android Design Library's** _TextInputLayout_  
@@ -119,7 +114,7 @@ validatedtextinputlayout in the latest version [You may want to update your xml 
                 validation:isRequired="true"
                 validation:requiredValidationMessage="Your error message here.">
         
-                <android.support.design.widget.TextInputEditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Username"
@@ -136,7 +131,7 @@ validatedtextinputlayout in the latest version [You may want to update your xml 
                 validation:maxLength="8"
                 validation:minLength="4">
         
-                <android.support.design.widget.TextInputEditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Password (AutoValidated)"
@@ -153,7 +148,7 @@ validatedtextinputlayout in the latest version [You may want to update your xml 
                 validation:regex="^[a-z0-9._%+-]+@(?:[a-z0-9-]+[.])+[a-z]{2,}$"
                 validation:regexValidationMessage="Your error message here">
         
-                <android.support.design.widget.TextInputEditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Email"
