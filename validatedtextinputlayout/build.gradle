@@ -1,5 +1,9 @@
 apply plugin: 'com.android.library'
 
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
 ext {
     bintrayRepo = 'maven'
     bintrayName = 'validatedtextinputlayout'
@@ -26,12 +30,11 @@ ext {
 }
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    compileSdkVersion 29
 
     defaultConfig {
-        minSdkVersion 9
-        targetSdkVersion 25
+        minSdkVersion 19
+        targetSdkVersion 29
         versionCode 1
         versionName "0.3.0"
     }
@@ -44,10 +47,10 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    testCompile "org.mockito:mockito-core:1.10.19"
-    compile 'com.android.support:design:25.3.1'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+    testImplementation "org.mockito:mockito-core:1.10.19"
+    implementation 'com.google.android.material:material:1.0.0'
 }
 
 if (project.rootProject.file('local.properties').exists()) {

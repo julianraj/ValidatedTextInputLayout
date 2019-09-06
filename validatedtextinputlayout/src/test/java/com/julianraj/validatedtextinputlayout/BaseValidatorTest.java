@@ -21,7 +21,7 @@ public class BaseValidatorTest {
     public void setUp() throws Exception {
         mValidator = new BaseValidator(ERROR_MESSAGE) {
             @Override
-            public boolean isValid(String pText) {
+            public boolean isValid(String text) {
                 return false;
             }
         };

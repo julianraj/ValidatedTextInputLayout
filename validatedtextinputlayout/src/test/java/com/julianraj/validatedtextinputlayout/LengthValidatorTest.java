@@ -36,12 +36,12 @@ public class LengthValidatorTest {
 
     @Test
     public void lengthValidator_ReturnsTrue() {
-        mValidator.setMaximumLength(LengthValidator.LENGTH_INDEFINITE);
+        mValidator.setMaximumLength(LengthValidator.Companion.getLENGTH_INDEFINITE());
         mValidator.setMinimumLength(MIN_LENGTH);
         assertThat(mValidator.isValid(CORRECT_SAMPLE), is(true));
 
         mValidator.setMaximumLength(MAX_LENGTH);
-        mValidator.setMinimumLength(LengthValidator.LENGTH_ZERO);
+        mValidator.setMinimumLength(LengthValidator.Companion.getLENGTH_ZERO());
         assertThat(mValidator.isValid(CORRECT_SAMPLE), is(true));
 
         mValidator.setMaximumLength(MAX_LENGTH);
